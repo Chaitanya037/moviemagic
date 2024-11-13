@@ -22,7 +22,6 @@ const App = () => {
       options
     );
     const result = await response.json();
-    console.log('O', result);
     setMovies(result.data);
   };
 
