@@ -7,6 +7,7 @@ import SearchIcon from "./search.svg";
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [errorMessage, setErrorMessage] = useState('Nothing Found');
 
   const API_URL = "https://imdb188.p.rapidapi.com/api/v1/";
   const options = {
@@ -17,12 +18,15 @@ const App = () => {
     },
   };
   const searchMovies = async (title) => {
-    const response = await fetch(
-      `${API_URL}searchIMDB?query=${title}`,
-      options
-    );
-    const result = await response.json();
-    setMovies(result.data);
+    if(title !== ''){
+      const response = await fetch(
+        `${API_URL}searchIMDB?query=${title}`,
+        options
+      );
+      const result = await response.json();
+      (result.message === 'Success') ? setMovies(result.data) : setErrorMessage(result.message);
+    }
+    
   };
 
   useEffect(() => {
@@ -48,10 +52,11 @@ const App = () => {
         </div>
       ) : (
         <div className="empty">
-          <h2>Nothing found</h2>
+          <h2>{errorMessage}</h2>
         </div>
       )}
     </div>
   );
 };
+
 export default App;
