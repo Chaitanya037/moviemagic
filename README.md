@@ -1,3 +1,15 @@
+# React App sample to practice pulling Movie information from iMDB API
+
+Here we have used RapidAPI free for pulling the information from IMDB.
+
+You can clone the repo and run it
+
+This is a starters practice project
+
+# Github pages
+
+[Demo](https://chaitanya037.github.io/moviemagic/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
